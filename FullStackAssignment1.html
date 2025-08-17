@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardik's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f6f9fc, #dbe9ff);
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      color: white;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 { font-size: 1.5rem; }
+
+    nav a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    nav a.active, nav a:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    h2 {
+      margin-bottom: 12px;
+      color: #2575fc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th { background: #2575fc; color: white; }
+
+    /* GALLERY */
+    .gallery .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.07);
+    }
+
+    /* CONTACT FORM */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, textarea, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+      padding: 12px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Hardik's Portfolio</h1>
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <main>
+    <section id="home" class="card">
+      <h2>Welcome!</h2>
+      <p>This is my portfolio site showcasing my academic projects and skills in web development.</p>
+    </section>
+
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>I am a Data Science student passionate about building clean, modern websites and solving real-world problems using Python.</p>
+      <table>
+        <tr><th>Technology</th><th>Level</th></tr>
+        <tr><td>HTML</td><td>Advanced</td></tr>
+        <tr><td>CSS</td><td>Intermediate</td></tr>
+        <tr><td>Python</td><td>Intermediate</td></tr>
+      </table>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="card">
+      <h2>My Projects</h2>
+      <ol>
+        <li>AQI checker website
+          <ul><li>Controller configure app</li><li>Music Equ app</li></ul>
+        </li>
+        <li>Data Visualization in Python</li>
+        <li>Travel Gallery Web App</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>My Location</h2>
+      <iframe src="https://www.google.com/maps?q=Mumbai&output=embed" width="100%" height="250" class="map"></iframe>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery card">
+      <h2>Travel Gallery</h2>
+      <div class="grid">
+        <img src="https://images.pexels.com/photos/2675268/pexels-photo-2675268.jpeg" alt="Travel 1">
+        <img src="https://images.pexels.com/photos/2564036/pexels-photo-2564036.jpeg" alt="Travel 2">
+        <img src="https://images.pexels.com/photos/7372492/pexels-photo-7372492.jpeg" alt="Travel 3">
+        <img src="https://images.pexels.com/photos/8150292/pexels-photo-8150292.jpeg" alt="Travel 4">
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card">
+      <h2>Contact Me</h2>
+      <form>
+        <label>Name:<br><input type="text" required></label><br>
+        <label>Email:<br><input type="email" required></label><br>
+
+        <label>Gender:</label><br>
+        <label><input type="radio" name="gender"> Male</label>
+        <label><input type="radio" name="gender"> Female</label><br>
+
+        <label>Skills:</label><br>
+        <label><input type="checkbox"> HTML</label>
+        <label><input type="checkbox"> CSS</label>
+        <label><input type="checkbox"> Python</label><br>
+
+        <label>Looking for:<br>
+          <select>
+            <option>Internship</option>
+            <option>Job</option>
+            <option>Freelance</option>
+          </select>
+        </label><br>
+
+        <label>Message:<br><textarea rows="4"></textarea></label><br>
+
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Hardik's Portfolio</p>
+  </footer>
+
+</body>
+</html>
