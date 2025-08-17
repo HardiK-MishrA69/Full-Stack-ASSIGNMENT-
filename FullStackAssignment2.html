@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Voyage Vista — discover destinations, plan trips, and contact us. Interactive, fast, and mobile‑friendly." />
+  <title>Voyage Vista</title>
+
+  <!-- Tailwind v3 CDN (supports arbitrary values & modern utilities) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Small custom tweaks -->
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Hide scroll-to-top button by default; shown via JS */
+    #toTop { display: none; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-blue-50 text-gray-800 font-sans">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="text-2xl font-extrabold tracking-tight text-blue-700">Voyage <span class="text-blue-500">Vista</span></a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#home" class="hover:text-blue-600">Home</a>
+        <a href="#destinations" class="hover:text-blue-600">Destinations</a>
+        <a href="#itinerary" class="hover:text-blue-600">Itinerary</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="menuToggle" aria-controls="mobileMenu" aria-expanded="false" class="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 text-blue-700 hover:bg-blue-50">
+        <span class="sr-only">Open menu</span>
+        <!-- Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobileMenu" class="md:hidden hidden border-t bg-white">
+      <nav class="px-4 py-3 flex flex-col gap-3">
+        <a href="#home" class="py-2 hover:text-blue-600">Home</a>
+        <a href="#destinations" class="py-2 hover:text-blue-600">Destinations</a>
+        <a href="#itinerary" class="py-2 hover:text-blue-600">Itinerary</a>
+        <a href="#contact" class="py-2 hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative h-[78vh] min-h-[480px] flex items-center justify-center">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" alt="Ocean wave at sunrise" class="absolute inset-0 w-full h-full object-cover"/>
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 text-center text-white px-6">
+      <h1 class="text-4xl md:text-6xl font-extrabold drop-shadow mb-4">Your Journey Starts Here</h1>
+      <p class="text-lg md:text-2xl opacity-95 mb-8">Find hidden gems, plan memorable days, and go further.</p>
+      <a href="#destinations" class="inline-block bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full font-semibold transition transform hover:scale-[1.03]">Explore Destinations</a>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS with simple category filter (no frameworks) -->
+  <section id="destinations" class="max-w-7xl mx-auto px-4 py-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+      <div>
+        <h2 class="text-3xl font-bold text-blue-700">Top Destinations</h2>
+        <p class="text-gray-600">Tap a filter to quickly sort places by vibe.</p>
+      </div>
+      <div class="flex flex-wrap gap-3" aria-label="Destination filters">
+        <button data-filter="all" class="filter-btn bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">All</button>
+        <button data-filter="beach" class="filter-btn px-4 py-2 rounded-full border hover:bg-blue-50">Beach</button>
+        <button data-filter="mountain" class="filter-btn px-4 py-2 rounded-full border hover:bg-blue-50">Mountain</button>
+        <button data-filter="city" class="filter-btn px-4 py-2 rounded-full border hover:bg-blue-50">City</button>
+      </div>
+    </div>
+
+    <div id="cards" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Beach -->
+      <article class="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition" data-category="beach">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Palm trees and turquoise beach" class="h-48 w-full object-cover group-hover:scale-105 transition-transform"/>
+        <div class="p-5">
+          <h3 class="font-semibold text-lg">Tropical Paradise</h3>
+          <p class="text-sm text-gray-600">Crystal waters, white sand, and island rhythms.</p>
+        </div>
+      </article>
+
+      <!-- Mountain -->
+      <article class="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition" data-category="mountain">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Sunlit mountain ridge with clouds" class="h-48 w-full object-cover group-hover:scale-105 transition-transform"/>
+        <div class="p-5">
+          <h3 class="font-semibold text-lg">Highland Escape</h3>
+          <p class="text-sm text-gray-600">Panoramic hikes, fresh air, and cozy cabins.</p>
+        </div>
+      </article>
+
+      <!-- City -->
+      <article class="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition" data-category="city">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200&q=80" alt="City skyline at dusk" class="h-48 w-full object-cover group-hover:scale-105 transition-transform"/>
+        <div class="p-5">
+          <h3 class="font-semibold text-lg">Urban Adventure</h3>
+          <p class="text-sm text-gray-600">Landmarks by day, lights and flavors by night.</p>
+        </div>
+      </article>
+
+      <!-- Extra cards for variety -->
+      <article class="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition" data-category="beach">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1519817914152-22d216bb9170?auto=format&fit=crop&w=1200&q=80" alt="Hidden cove with cliffs and blue water" class="h-48 w-full object-cover group-hover:scale-105 transition-transform"/>
+        <div class="p-5">
+          <h3 class="font-semibold text-lg">Hidden Cove</h3>
+          <p class="text-sm text-gray-600">Secluded bays for slow mornings and sunsets.</p>
+        </div>
+      </article>
+
+      <article class="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition" data-category="mountain">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80" alt="Alpine lake with snowy peaks" class="h-48 w-full object-cover group-hover:scale-105 transition-transform"/>
+        <div class="p-5">
+          <h3 class="font-semibold text-lg">Alpine Lake</h3>
+          <p class="text-sm text-gray-600">Mirror‑still waters and dramatic peaks.</p>
+        </div>
+      </article>
+
+      <article class="group bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition" data-category="city">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1200&q=80" alt="Bustling street market" class="h-48 w-full object-cover group-hover:scale-105 transition-transform"/>
+        <div class="p-5">
+          <h3 class="font-semibold text-lg">Street Markets</h3>
+          <p class="text-sm text-gray-600">Colors, crafts, and sizzling eats.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ITINERARY (Progressive disclosure with <details>) -->
+  <section id="itinerary" class="bg-blue-50 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-blue-700 text-center mb-10">3‑Day Sample Itinerary</h2>
+
+      <div class="space-y-4">
+        <details class="bg-white rounded-lg shadow p-5">
+          <summary class="cursor-pointer font-semibold text-blue-700">Day 1 — Arrival & Welcome</summary>
+          <p class="mt-3 text-gray-700">Check‑in, sunset stroll, and a seaside welcome dinner.</p>
+        </details>
+        <details class="bg-white rounded-lg shadow p-5">
+          <summary class="cursor-pointer font-semibold text-blue-700">Day 2 — Adventure & Culture</summary>
+          <p class="mt-3 text-gray-700">Morning hike or snorkel, followed by a guided city tour.</p>
+        </details>
+        <details class="bg-white rounded-lg shadow p-5">
+          <summary class="cursor-pointer font-semibold text-blue-700">Day 3 — Relax & Depart</summary>
+          <p class="mt-3 text-gray-700">Spa or beach lounge, local brunch, and departure.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-blue-700 text-center mb-8">Contact Us</h2>
+      <form class="space-y-4 bg-white p-6 rounded-xl shadow">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input type="text" placeholder="Your Name" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-500 outline-none" required>
+          <input type="email" placeholder="Your Email" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-500 outline-none" required>
+        </div>
+        <textarea placeholder="Your Message" rows="4" class="w-full p-3 border rounded focus:ring-2 focus:ring-blue-500 outline-none" required></textarea>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition transform hover:scale-[1.02]">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-700 text-white text-center py-4">
+    <p>&copy; 2025 Voyage Vista</p>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button id="toTop" aria-label="Back to top" class="fixed bottom-5 right-5 rounded-full shadow-lg bg-blue-600 text-white p-3 hover:bg-blue-700">
+    ↑
+  </button>
+
+  <!-- Vanilla JS for menu toggle, filters, and back-to-top -->
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isHidden));
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Destination filters
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#cards [data-category]');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        // UI state
+        buttons.forEach(b => b.classList.remove('bg-blue-600', 'text-white'));
+        btn.classList.add('bg-blue-600', 'text-white');
+        // Show/hide
+        cards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          const show = filter === 'all' || cat === filter;
+          card.classList.toggle('hidden', !show);
+        });
+      });
+    });
+
+    // Scroll-to-top visibility + behavior
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        toTop.style.display = 'block';
+      } else {
+        toTop.style.display = 'none';
+      }
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
